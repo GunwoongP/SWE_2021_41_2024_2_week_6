@@ -14,15 +14,29 @@ In Week 4, we worked with **Google Colab** to run iPython (Jupyter Notebook) and
   Open the provided Google Colab link and save a copy in your Google Drive.
 
 - **Coding**:  
-  Write Python code to solve the algorithm problem and verify the solution with appropriate test cases.
+  Write Python code to solve the algorithm problem of checking whether a number is a "Happy Number."
 
-- **Submission**:  
-  1. Download the notebook as a `.ipynb` file and rename it to `{studentID}_{name}.ipynb`.  
-  2. Create a new GitHub repository named `SWE_2021_41_2024_2_week_4`.  
-  3. Upload the notebook file to the repository, write a commit message, and commit the changes.
+  ### Happy Number Algorithm
+  A *happy number* is a number defined by the following process:
+  - Starting with any positive integer, replace the number by the sum of the squares of its digits.
+  - Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle that does not include 1.
+  - Numbers for which this process ends in 1 are called happy numbers.
 
-For more details, refer to the Colab notebook linked in the assignment.
-
+  The code below is the implementation of the happy number problem:
+  
+  ```python
+  def isHappy(n):
+      k = set()
+      while n != 1 and n not in k:
+          k.add(n)
+          tmp = 0
+          for i in str(n):
+              tmp += int(i) ** 2
+          n = tmp
+      return n == 1
+  
+  # Example of usage
+  print(isHappy(19))  # This will print True since 19 is a happy number
 ---
 
 ## Week 5: Docker Assignment
