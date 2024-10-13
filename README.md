@@ -90,5 +90,5 @@ After setting up the container, installing Git and Python3, and configuring the 
      docker inspect --format="{{ .HostConfig.Binds }}" <container_name>
      ```
 ### Sample Output:
-
+![2019311800 OSSP docker](https://github.com/user-attachments/assets/48acadf4-0316-4bc5-9c22-2c2ea8f70ef6)
      
