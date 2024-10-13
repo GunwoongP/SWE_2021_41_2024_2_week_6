@@ -38,7 +38,6 @@ In Week 4, we worked with **Google Colab** to run iPython (Jupyter Notebook) and
   # Example of usage
   print(isHappy(19))  # This will print True since 19 is a happy number
 ---
-
 ## Week 5: Docker Assignment
 
 The Week 5 assignment focused on creating a Docker container that simulates a development environment. The container needed to meet specific requirements, including a Linux OS, Git, Python3, and a bind mount between the host and the container.
@@ -57,7 +56,39 @@ The Week 5 assignment focused on creating a Docker container that simulates a de
      python3 --version
      ```
 
-- **Bind Mount**:  
-  To check the bind mount configuration, run the following command on the host system:
-  ```bash
-  docker inspect --format="{{ .HostConfig.Binds }}" <container_name>
+### Bind Mount Process:
+1. **Create a bind mount**:  
+   A bind mount allows a file or directory on the host machine to be mounted into the container, making it accessible inside the container.
+
+   Example command to create a container with a bind mount:
+   ```bash
+   docker run -dit --name ossp-container -v /path/to/host_dir:/path/to/container_dir ubuntu
+2. **Check the Bind Mount Configuration**:
+   To verify that the bind mount is set up correctly, run the following command:
+   ```bash
+   docker inspect --format="{{ .HostConfig.Binds }}" ossp-container
+   ```
+   This command will print the bind mount configuration, showing the directories on both the host and the container.
+
+### Final Verification:
+After setting up the container, installing Git and Python3, and configuring the bind mount, use the following commands to verify
+  1. Container Start:
+     ```bash
+     docker start ossp-container
+     ```
+  2. Check OS Version:
+     ```bash
+     docker exec ossp-container cat /etc/os-release
+     ```
+  3. Check Git and Python Versions:
+     ```bash
+     docker exec ossp-container git --version
+     docker exec ossp-container python3 --version
+     ```
+  4. Verify Bind Mount Configuration:
+     ```bash
+     docker inspect --format="{{ .HostConfig.Binds }}" <container_name>
+     ```
+### Sample Output:
+
+     
